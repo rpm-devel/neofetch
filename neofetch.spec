@@ -1,5 +1,5 @@
 Name:           neofetch
-Version:        3.4.0
+Version:        7.1.0
 Release:        1%{?dist}
 Summary:        CLI system information tool written in Bash
 
@@ -11,10 +11,8 @@ Source0:        https://github.com/dylanaraps/%{name}/archive/%{version}.tar.gz#
 Requires:       bash >= 3.0
 # EPEL packages don't yet have support for weak-dependencies
 # https://fedoraproject.org/wiki/Packaging:WeakDependencies#Weak_dependencies
-%if 0%{?fedora} >= 23
-Recommends:     bind-utils, coreutils, curl, gawk, grep, ImageMagick, lspci
-Recommends:     w3m-img, xdotool, xorg-x11-server-utils, xorg-x11-utils
-%endif
+Recommends:     bind-utils, coreutils, curl, gawk, grep, ImageMagick
+Recommends:     pciutils, xdotool
 
 %description
 Neofetch displays information about your system next to an image,
@@ -40,6 +38,10 @@ sed 's,/usr/bin/env bash,%{_bindir}/bash,g' -i neofetch
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 7.1.0-1
+- Update to 7.1.0 (final release - project archived)
+- Remove Fedora version conditionals
+
 * Fri Apr 06 2018 Kees de Jong <keesdejong@fedoraproject.org> - 3.4.0-1
 - New upstream release
 
