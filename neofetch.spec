@@ -11,8 +11,10 @@ Source0:        https://github.com/dylanaraps/%{name}/archive/%{version}.tar.gz#
 Requires:       bash >= 3.0
 # EPEL packages don't yet have support for weak-dependencies
 # https://fedoraproject.org/wiki/Packaging:WeakDependencies#Weak_dependencies
+%if 0%{?rhel} >= 8 || 0%{?fedora}
 Recommends:     bind-utils, coreutils, curl, gawk, grep, ImageMagick
 Recommends:     pciutils, xdotool
+%endif
 
 %description
 Neofetch displays information about your system next to an image,
@@ -38,6 +40,9 @@ sed 's,/usr/bin/env bash,%{_bindir}/bash,g' -i neofetch
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri May 22 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 7.1.0-1
+- Wrap Recommends lines in EL8+/Fedora guard
+
 * Fri Apr 24 2026 CasjaysDev <rpm-devel@casjaysdev.pro> - 7.1.0-1
 - Update to 7.1.0 (final release - project archived)
 - Remove Fedora version conditionals
